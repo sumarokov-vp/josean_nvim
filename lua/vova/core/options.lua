@@ -40,3 +40,10 @@ opt.splitbelow = true -- split horizontal window to the bottom
 
 -- turn off swapfile
 opt.swapfile = false
+
+local d = vim.diagnostic
+d.config({
+  float = {
+    source = "always",
+  },  
+})
