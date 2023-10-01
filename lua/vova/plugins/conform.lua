@@ -1,7 +1,7 @@
 -- Formatting
 return {
   "stevearc/conform.nvim",
-  enabled = false,
+  enabled = true,
   event = { "BufReadPre", "BufNewFile" },
   config = function()
     local conform = require("conform")
