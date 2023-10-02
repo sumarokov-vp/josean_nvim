@@ -18,7 +18,7 @@ return {
       })
     end,
     keys = {
-      { "<leader>rr", "<cmd>lua require('rest-nvim').run()<CR>" },
+      { "<leader>rr", "<cmd>lua require('rest-nvim').run()<CR>", desc = "Rest run request" },
     },
   },
 }
