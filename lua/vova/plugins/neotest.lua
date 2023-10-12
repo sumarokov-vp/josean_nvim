@@ -8,6 +8,9 @@ return {
     { "<leader>tj", "<cmd>Neotest jump next<CR>", desc = "Next test" },
     { "<leader>to", "<cmd>Neotest output<CR>", desc = "Output hover" },
     { "<leader>tp", "<cmd>Neotest output-panel<CR>", desc = "Output panel" },
+    {"<leader>td", function()
+      require("dap-python").test_method()
+    end, desc = "Debug test"},
   },
   dependencies = {
     "nvim-lua/plenary.nvim",
