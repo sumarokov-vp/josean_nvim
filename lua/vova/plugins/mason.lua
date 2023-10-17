@@ -7,7 +7,10 @@ return {
         "debugpy",
         "mypy",
         "ruff",
+        "ruff-lsp",
         "pyright",
+        "lua-language-server",
+        "stylua",
       },
     },
     config = function()
