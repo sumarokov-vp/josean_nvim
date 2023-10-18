@@ -1,12 +1,19 @@
 -- TODO: Add support for more languages
 -- WARNING: This plugin is not working properly with treesitter
+-- NOTE: This plugin is not working properly with treesitter
+-- HACK: This plugin is not working properly with treesitter
+-- PERF: This plugin is not working properly with treesitter
+-- WARN: This plugin is not working properly with treesitter
+-- FIX: This plugin is not working properly with treesitter
+--
 return {
   {
     "folke/todo-comments.nvim",
-    ft = { "python", "lua" },
-    -- lazy = false,
+    -- ft = { "python", "lua" },
+    lazy = false,
     enable = true,
     dependencies = { "nvim-lua/plenary.nvim" },
+    -- keys = { "<leader>ft", "<cmd>TodoTelescope<CR>", desc = "Find TODOs" },
     opts = {
       signs = true, -- show icons in the signs column
       sign_priority = 8, -- sign priority
@@ -20,7 +27,7 @@ return {
         TODO = { icon = " ", color = "info" },
         HACK = { icon = " ", color = "warning" },
         WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
-        PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+        PERF = { icon = "󰓅 ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
         NOTE = { icon = "!", color = "hint", alt = { "INFO" } },
         TEST = { icon = "⏲ ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
       },

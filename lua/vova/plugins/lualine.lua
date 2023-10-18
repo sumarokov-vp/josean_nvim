@@ -1,17 +1,24 @@
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
+  event = { "BufReadPre", "BufNewFile" },
+  keys = {
+    { "<Tab>", "<cmd>bnext<cr>", desc = "Next buffer" },
+    { "<S-Tab>", "<cmd>bprevious<cr>", desc = "Next buffer" },
+    { "<leader>x", "<cmd>bd<cr>", desc = "Close buffer" },
+  },
   config = function()
     local lualine = require("lualine")
-    local lazy_status = require("lazy.status") -- to configure lazy pending updates count
+    local lazy_status = require("lazy.status")
 
-    -- configure lualine with modified theme
     lualine.setup({
       options = {
-        -- theme = my_lualine_theme,
         theme = "gruvbox_dark",
       },
       sections = {
+        lualine_a = {'searchcount','buffers'},
+        lualine_b = {'branch', 'diff'},
+        lualine_c = {'diagnotics'},
         lualine_x = {
           {
             lazy_status.updates,
@@ -22,6 +29,8 @@ return {
           { "fileformat" },
           { "filetype" },
         },
+        lualine_y = {'progress'},
+        lualine_z = {'selectioncount','location'}
       },
     })
   end,
