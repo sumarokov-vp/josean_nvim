@@ -17,10 +17,6 @@ keymap.set("n", "<Esc>", ":noh <CR>", { desc = "Clear search highlights" })
 -- delete single character without copying into register
 -- keymap.set("n", "x", '"_x')
 
--- increment/decrement numbers
-keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
-keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement
-
 -- window management
 keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
 keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
@@ -32,3 +28,8 @@ keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" }
 -- keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
 -- keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
 -- keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
+--
+--
+-- save file
+keymap.set("n", "<leader>w", "<cmd>w<CR>", { desc = "Save file" })
+keymap.set("n", "<leader>q", "<cmd>wqa<CR>", { desc = "Save file and exit" })
