@@ -70,13 +70,17 @@ return {
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
 
-    -- configure python server
-    -- lspconfig["pyright"].setup({
     lspconfig.pyright.setup({
       capabilities = capabilities,
       on_attach = on_attach,
       filetypes = { "python" },
     })
+    --
+    -- lspconfig.ruff_lsp.setup({
+    --   capabilities = capabilities,
+    --   on_attach = on_attach,
+    --   filetypes = { "python" },
+    -- })
 
     lspconfig.lua_ls.setup({
       capabilities = capabilities,
