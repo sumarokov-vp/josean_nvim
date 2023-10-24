@@ -1,6 +1,6 @@
 return {
   {
     "github/copilot.vim",
-    ft = { "python", "sql", "lua" },
+    ft = { "python", "sql", "lua" , "cs"},
   },
 }
