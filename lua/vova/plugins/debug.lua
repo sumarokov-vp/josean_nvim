@@ -1,11 +1,13 @@
 return {
   {
     "mfussenegger/nvim-dap",
-    ft = {"python"},
+    ft = { "python" },
     keys = {
-      {"<leader>db", "<cmd>DapToggleBreakpoint<cr>", desc = "Toggle breakpoint"},
-      {"<leader>dc", "<cmd>DapContinue<cr>", desc = "Debug"},
-      {"<leader>dt", "<cmd>DapTerminate<cr>", desc = "Terminate Debug"},
+      { "<leader>db", "<cmd>DapToggleBreakpoint<cr>", desc = "Toggle breakpoint" },
+      { "<leader>dc", "<cmd>DapContinue<cr>",         desc = "Debug" },
+      { "<leader>dt", "<cmd>DapTerminate<cr>",        desc = "Terminate Debug" },
+      { "<leader>do", "<cmd>DapStepOver<cr>",         desc = "Terminate Debug" },
+      { "<leader>di", "<cmd>DapStepInto<cr>",         desc = "Terminate Debug" },
       {
         "<leader>dd",
         function()
@@ -22,21 +24,56 @@ return {
       vim.api.nvim_set_hl(0, 'DapLogPoint', { ctermbg = 0, fg = '#61afef', bg = '#6e3405' })
       vim.api.nvim_set_hl(0, 'DapStopped', { ctermbg = 0, fg = '#000000', bg = '#98c379' })
 
-      vim.fn.sign_define('DapBreakpoint', { text='⏣', texthl='DapBreakpointLine', linehl='DapBreakpointLine', numhl='DapBreakpointLine' })
-      vim.fn.sign_define('DapBreakpointCondition', { text='ﳁ', texthl='DapBreakpoint', linehl='DapBreakpoint', numhl='DapBreakpoint' })
-      vim.fn.sign_define('DapBreakpointRejected', { text='', texthl='DapBreakpoint', linehl='DapBreakpoint', numhl= 'DapBreakpoint' })
-      vim.fn.sign_define('DapLogPoint', { text='', texthl='DapLogPoint', linehl='DapLogPoint', numhl= 'DapLogPoint' })
-      vim.fn.sign_define('DapStopped', { text='', texthl='DapStopped', linehl='DapStopped', numhl= 'DapStopped' })
+      vim.fn.sign_define('DapBreakpoint',
+        { text = '⏣', texthl = 'DapBreakpointLine', linehl = 'DapBreakpointLine', numhl = 'DapBreakpointLine' })
+      vim.fn.sign_define('DapBreakpointCondition',
+        { text = 'ﳁ', texthl = 'DapBreakpoint', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
+      vim.fn.sign_define('DapBreakpointRejected',
+        { text = '', texthl = 'DapBreakpoint', linehl = 'DapBreakpoint', numhl = 'DapBreakpoint' })
+      vim.fn.sign_define('DapLogPoint', {
+        text = '',
+        texthl = 'DapLogPoint',
+        linehl = 'DapLogPoint',
+        numhl = 'DapLogPoint'
+      })
+      vim.fn.sign_define('DapStopped', { text = '', texthl = 'DapStopped', linehl = 'DapStopped', numhl = 'DapStopped' })
     end,
   },
   {
     "rcarriga/nvim-dap-ui",
     dependencies = "mfussenegger/nvim-dap",
-    ft = {"python"},
+    ft = { "python" },
     config = function()
       local dap = require("dap")
       local dapui = require("dapui")
-      dapui.setup()
+      dapui.setup(
+        {
+          layouts = {
+            {
+              -- Left panel
+              elements = {
+                -- Elements can be strings or table with id and size keys.
+                { id = "scopes",      size = 0.5 },
+                { id = "watches",     size = 0.2 },
+                { id = "stacks",      size = 0.2 },
+                { id = "breakpoints", size = 0.1 },
+              },
+              size = 0.4, -- 40 columns
+              -- size = 80, -- 80 columns
+              position = "left",
+            },
+            -- Bottom panel
+            {
+              elements = {
+                { id = "console", size = 0.8 },
+                { id = "repl",    size = 0.2 },
+              },
+              size = 0.25, -- 25% of total lines
+              position = "bottom",
+            },
+          },
+        }
+      )
       dap.listeners.after.event_initialized["dapui_config"] = function()
         dapui.open()
       end

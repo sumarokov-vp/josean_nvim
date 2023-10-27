@@ -70,12 +70,18 @@ return {
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
 
-    lspconfig.pyright.setup({
+    lspconfig.jedi_language_server.setup({
       capabilities = capabilities,
       on_attach = on_attach,
       filetypes = { "python" },
     })
-    --
+
+    -- lspconfig.pyright.setup({
+    --   capabilities = capabilities,
+    --   on_attach = on_attach,
+    --   filetypes = { "python" },
+    -- })
+
     -- lspconfig.ruff_lsp.setup({
     --   capabilities = capabilities,
     --   on_attach = on_attach,
