@@ -10,6 +10,8 @@ return {
     "onsails/lspkind.nvim", -- vs-code like pictograms
   },
   config = function()
+    vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
+
     local cmp = require("cmp")
 
     local luasnip = require("luasnip")
@@ -40,6 +42,7 @@ return {
 
       -- sources for autocompletion
       sources = cmp.config.sources({
+        { name = "copilot" },
         { name = "nvim_lsp" },
         { name = "luasnip" }, -- snippets
         { name = "buffer" }, -- text within current buffer
@@ -51,6 +54,16 @@ return {
           maxwidth = 50,
           ellipsis_char = "...",
         }),
+      },
+      window = {
+        completion = {
+          border = "rounded",
+          winhighlight = "Normal:Pmenu,CursorLine:PmenuSel,FloatBorder:FloatBorder,Search:None",
+          col_offset = -3,
+          side_padding = 1,
+          scrollbar = false,
+          scrolloff = 8,
+        },
       },
     })
   end,
