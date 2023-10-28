@@ -93,6 +93,7 @@ return {
               "vim",
               "require",
             },
+            enable = false, -- disable diagnostics !!!!! I am using luacheck + lint
           },
           workspace = {
             -- Make the server aware of Neovim runtime files
