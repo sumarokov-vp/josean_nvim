@@ -1,6 +1,6 @@
 return {
   "mfussenegger/nvim-lint",
-  enabled = false,
+  enabled = true,
   event = {
     "BufReadPre",
     "BufNewFile",
@@ -9,7 +9,10 @@ return {
     local lint = require("lint")
 
     lint.linters_by_ft = {
-      python = { "mypy" },
+      python = { "mypy", "ruff", "pylint", },
+      lua = { "luacheck", },
+      -- python = { "ruff", },
+
     }
 
     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
@@ -21,7 +24,7 @@ return {
       end,
     })
 
-    vim.keymap.set("n", "<leader>l", function()
+    vim.keymap.set("n", "<leader>i", function()
       lint.try_lint()
     end, { desc = "Trigger linting for current file" })
   end,
