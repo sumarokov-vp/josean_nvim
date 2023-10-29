@@ -1,4 +1,5 @@
 # Compiled Lua sources
+.Dstore
 luac.out
 lazy-lock.json
 .luarc.json
