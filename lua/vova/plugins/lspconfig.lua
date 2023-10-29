@@ -76,6 +76,12 @@ return {
       filetypes = { "python" },
     })
 
+    lspconfig.sqlls.setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      filetypes = { "sql" },
+    })
+
     lspconfig.lua_ls.setup({
       capabilities = capabilities,
       on_attach = on_attach,
