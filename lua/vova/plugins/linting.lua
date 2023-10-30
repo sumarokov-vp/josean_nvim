@@ -9,10 +9,9 @@ return {
     local lint = require("lint")
 
     lint.linters_by_ft = {
-      python = { "mypy", "ruff", "pylint", },
-      lua = { "luacheck", },
+      python = { "mypy", "ruff" },
+      lua = { "luacheck" },
       -- python = { "ruff", },
-
     }
 
     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
