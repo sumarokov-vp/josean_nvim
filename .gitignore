@@ -45,3 +45,5 @@ lazy-lock.json
 
 
 plugin/packer_compiled.lua
+lua/.DS_Store
+.DS_Store
