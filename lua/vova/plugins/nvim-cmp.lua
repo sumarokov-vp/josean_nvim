@@ -44,6 +44,7 @@ return {
       sources = cmp.config.sources({
         { name = "copilot" },
         { name = "nvim_lsp" },
+        { name = "vim-dadbod-completion" },
         { name = "luasnip" }, -- snippets
         { name = "buffer" }, -- text within current buffer
         { name = "path" }, -- file system paths
